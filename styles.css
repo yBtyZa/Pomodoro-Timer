@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #00141c;
+}
+
+.access_pomodoro{
+    width: 50vw;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.access_pomodoro button{
+    width: 15vw;
+    border: none;
+    height: 10vh;
+    font-size: 25px;
+    cursor: pointer;
+    transition: 0.5s;
+    margin-top: 100px;
+    background-color: #09313a;
+    box-shadow: 1px 1px 10px#ffffff;
+}
+
+.access_pomodoro button:hover{
+    transform: scale(1.1);
+    background-color: #124d58;
+}
+
+.mensagem_status{
+    margin-bottom: 25px;
+}
+
+.timer{
+    display: flex;
+}
+
+.timer h1{
+    font-size: 60px;
+}
+
+#timer_segundos, #timer_minutos, #timer_horas{
+    width: 110px;
+    padding: 10px 0;
+    margin: 0 10px ;
+    text-align: center;
+    background-color: #124d58;
+    border-top-right-radius: 20px;
+    box-shadow: 5px 5px 2px#ffffff;
+    border-bottom-right-radius: 20px;
+}
+
+#start-timer, #stop-timer, #reset-timer{
+    width: 5vw;
+    height: 5vh;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    margin: 25px 20px 0 10px;
+    background-color: #124d58;
+    border-bottom-right-radius: 15px;
+    box-shadow: 1px 1px 1px#ffffff;
+
+}
+#start-timer:hover, #stop-timer:hover, #reset-timer:hover{
+    transform: scale(1.05);
+    background-color: #09313a;
+}
+
+#exercicio-concluido{
+    width: 15vw;
+    height: 7vh;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    margin-top: 25px;
+    background-color: #124d58;
+    border-bottom-right-radius: 15px;
+    box-shadow: 1px 1px 1px#ffffff;
+}
+
+#exercicio-concluido:hover{
+    transform: scale(1.05);
+    background-color: #09313a;
+}
+
+.render_api{
+    width: 70vw;
+    margin-top: 50px;
+}
+
+
