@@ -1,6 +1,6 @@
 // Array para salvar os dados retornados da API
 let exerciseDetails = [];
-// Contador de index do array (Se tiver um valor salvo, usa o localStorage)
+// Contador de index do array (Se tiver um valor salvo, usa o )
 let contadorExerciseIndex = parseInt(localStorage.getItem('contadorExerciseIndex')) || -1
 // Contador offSet da API (Se tiver um valor salvo, usa o localStorage)
 let contadorApi = parseInt(localStorage.getItem('contadorOffsetApi')) || 0
@@ -12,7 +12,7 @@ let contadorApi = parseInt(localStorage.getItem('contadorOffsetApi')) || 0
 function acessarApi() {
     // Definição de Url e Key da API
     const apiUrl = `https://api.api-ninjas.com/v1/exercises?type=stretching&offset=${contadorApi}`
-    const keyApi = '{YOUR_KEY}'
+    const keyApi = 'YDpECZNItCkXMEFndd/UwA==vJtWnGRjt6YycVVC'
 
     // Setando configurações necessárias para acessar dados da Api
     const headers = {
@@ -172,6 +172,9 @@ let pararTimerSegundos
 // Elemento onde aparece a mensagem do timer 
 let mensagemStatus = document.getElementById('mensagem_status')
 
+// Capturando container pelo id 
+let container = document.getElementById('container')
+
 // Função para iniciar o timer 
 function startTimer() {
     // Importando o retorno da função capturarIdTimer() 
@@ -216,6 +219,16 @@ function startTimer() {
             // Formatando números abaixo de 10 com o 0 a esquerda
             let minutosFormatados = minutos < 10 ? `0${minutos}` : minutos;
             timerMinutos.innerHTML = minutosFormatados
+        }
+
+        // Quando faltar 10 segundos para o timer de trabalho finalizar... 
+        if ((minutos == 24 && segundos > 49 && segundos % 2 == 0) || (minutos == 25 && segundos == 0)){
+            // Mudamos o backgroundColor da pagina para 'rgb(102, 0, 0)' 
+            container.style.backgroundColor = 'rgb(102, 0, 0)'
+        }
+        // Se os segundos não forem par, o backgroundColor mantém original 
+        else{
+            container.style.backgroundColor = '#00141c'
         }
 
         // Quando o timer chegar a 25 minutos, é parado e chamada a função de intervalo de descanso
@@ -335,8 +348,8 @@ function startIntervaloDescanso() {
         // Renderizando números formatados na tela
         timerSegundos.innerHTML = segundosFormatados
         
-        // Quando 'segundosDescanco' atingir 0...  
-        if (segundosDescanco === 0) {
+        // Quando 'segundosDescanco' atingir 0 e minutosDescanco for maior que 0 ...  
+        if (minutosDescanco > 0 && segundosDescanco === 0) {
             // 'segundosDescanco' retorna a 60
             segundosDescanco = 60
         }
@@ -351,8 +364,18 @@ function startIntervaloDescanso() {
             timerMinutos.innerHTML = minutosFormatados
         }
 
+        // Quando faltar 10 segundos para o timer de descanso finalizar... 
+        if ((minutosDescanco == 0 && segundosDescanco < 11 && segundosDescanco % 2 == 0) || (minutosDescanco == 0 && segundosDescanco == 0)){
+            // Mudamos o backgroundColor da pagina para 'rgb(102, 0, 0)' 
+            container.style.backgroundColor = 'rgb(102, 0, 0)'
+        }
+        // Se os segundos não forem par, o backgroundColor mantém original 
+        else{
+            container.style.backgroundColor = '#00141c'
+        }
+
         // Se 'minutosDescanco' e 'segundosDescanco' chegar em 0, é chamada a função para parar o timer de descaso
-        if (minutosDescanco === 0 & segundosDescanco === 1) {
+        if (minutosDescanco === 0 & segundosDescanco === 0) {
             stopIntervaloDescanso()
         }
     }, 1000)
@@ -368,7 +391,7 @@ function stopIntervaloDescanso() {
     segundos = 0
 
     segundosDescanco = 59
-    minutosDescanco = 0
+    minutosDescanco = 4
     horasDescanco = 0
 
     // Importando o retorno da função capturarIdTimer() 
@@ -415,6 +438,9 @@ function exercicioConcluido() {
     // Removendo botão de finalizar exercicio
     let btnConcluirExercicio = document.getElementById('exercicio-concluido')
     btnDivTimer.removeChild(btnConcluirExercicio)
+
+    // Quando o botão de exercicio finalizado for clicado, retornamos o backgroundColor a cor padrão 
+    container.style.backgroundColor = '#00141c'
 
     // Removendo exercicio renderizado na tela 
     let h1Name = document.getElementById('h1-name')
