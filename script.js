@@ -1,6 +1,6 @@
 // Array para salvar os dados retornados da API
 let exerciseDetails = [];
-// Contador de index do array (Se tiver um valor salvo, usa o )
+// Contador de index do array (Se tiver um valor salvo, usa o localStorage)
 let contadorExerciseIndex = parseInt(localStorage.getItem('contadorExerciseIndex')) || -1
 // Contador offSet da API (Se tiver um valor salvo, usa o localStorage)
 let contadorApi = parseInt(localStorage.getItem('contadorOffsetApi')) || 0
