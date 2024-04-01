@@ -225,6 +225,8 @@ function startTimer() {
         if ((minutos == 24 && segundos > 49 && segundos % 2 == 0) || (minutos == 25 && segundos == 0)){
             // Mudamos o backgroundColor da pagina para 'rgb(102, 0, 0)' 
             container.style.backgroundColor = 'rgb(102, 0, 0)'
+            // Chamando função de som 
+            playSound()
         }
         // Se os segundos não forem par, o backgroundColor mantém original 
         else{
@@ -368,6 +370,8 @@ function startIntervaloDescanso() {
         if ((minutosDescanco == 0 && segundosDescanco < 11 && segundosDescanco % 2 == 0) || (minutosDescanco == 0 && segundosDescanco == 0)){
             // Mudamos o backgroundColor da pagina para 'rgb(102, 0, 0)' 
             container.style.backgroundColor = 'rgb(102, 0, 0)'
+            // Chamando função de som 
+            playSound()
         }
         // Se os segundos não forem par, o backgroundColor mantém original 
         else{
@@ -450,10 +454,16 @@ function exercicioConcluido() {
     let pInstructions = document.getElementById('p-instructions')
     renderApi.removeChild(pInstructions)
 
-    //Chamando função para parar descanso
+    // Chamando função para parar descanso
     stopIntervaloDescanso()
     // Chamando função para parar criar novamente os botões do timer
     criarBtnTimer()
     // Chamando função para remover status de 'descansando' e iniciar o timer
     statusTimer()
+}
+
+// Função de som para segundo finais 
+function playSound() {
+    let audio = new Audio('./assets/somTimer.mp3')
+    audio.play();
 }
