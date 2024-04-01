@@ -12,7 +12,7 @@ let contadorApi = parseInt(localStorage.getItem('contadorOffsetApi')) || 0
 function acessarApi() {
     // Definição de Url e Key da API
     const apiUrl = `https://api.api-ninjas.com/v1/exercises?type=stretching&offset=${contadorApi}`
-    const keyApi = 'YDpECZNItCkXMEFndd/UwA==vJtWnGRjt6YycVVC'
+    const keyApi = '{YOUR_KEY}'
 
     // Setando configurações necessárias para acessar dados da Api
     const headers = {
